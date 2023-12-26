@@ -1,0 +1,42 @@
+.welcome-page {
+    
+    max-width: 1280px;
+  
+    padding: 2rem;
+    text-align: center;
+    align-content: center;
+    
+     justify-content: center;
+  
+  }
+
+  
+  
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8; /* Ajusta según sea necesario */
+  }
+  
+  .enter-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* O el color que prefieras */
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+   
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  

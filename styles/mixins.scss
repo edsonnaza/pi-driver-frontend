@@ -1,0 +1,39 @@
+// Smartphone Screen
+$screen-sm: 766px;
+
+// Tablets
+$screen-md:1023px;
+
+//Desktop
+$screen-lg: 1024px;
+
+// Devices / SmartPhone Mixin
+@mixin sm {
+    @media only screen and (max-width: $screen-sm){
+        @content;
+    }
+}
+
+@mixin md {
+    @media only screen and (min-width:$screen-sm) and (max-width:$screen-md){
+        @content;
+    }
+}
+
+//Mixin for Desktop
+
+@mixin lg{
+    @media only screen and (min-width:$screen-lg){
+        @content;
+    }
+}
+
+// Mixin for Display Flex
+
+@mixin flex($direction, $wrap, $justify, $align, $spache:0){
+    display: flex;
+    flex-flow: $direction $wrap;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $space;
+}
