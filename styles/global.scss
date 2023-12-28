@@ -2,10 +2,7 @@
   box-sizing: border-box;
 }
 
-html {
-  font-family: sans-serif;
-  background: #fff;
-}
+ 
 
 body {
   margin: 0;
@@ -15,6 +12,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: $background-color;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 main {

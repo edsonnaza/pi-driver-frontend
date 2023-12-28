@@ -6,7 +6,7 @@
     text-align: center;
     align-content: center;
     
-     justify-content: center;
+  
   
   }
 
@@ -35,8 +35,10 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-   
     cursor: pointer;
     transition: border-color 0.25s;
   }
   
+  button:hover {
+    border-color: $red;
+  }

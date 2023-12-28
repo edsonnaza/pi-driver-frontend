@@ -1,0 +1,18 @@
+.cardsContainer {
+ 
+  display: flex;
+  
+  justify-content: space-around;
+  height: auto;
+  margin: -10px;
+  margin-inline-end: 5px;
+  margin-inline-start: 5px;
+
+  min-height: 50vh;
+  flex-wrap: wrap;
+  place-content: center;
+  gap: 1px;
+   
+  
+  }
+  

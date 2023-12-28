@@ -1,0 +1,25 @@
+
+.button {
+
+    display: inline-block;
+    height: 50px;
+    width: 176px;
+  
+    box-sizing: border-box;
+    border: transparent;
+    border-radius: 60px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: $white;
+    background-color: $black;
+    cursor: pointer;
+    outline: none;
+  
+  }
+
+  button:hover {
+    background-color: $primary-color;
+  }

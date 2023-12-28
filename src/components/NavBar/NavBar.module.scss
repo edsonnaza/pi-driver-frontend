@@ -1,0 +1,65 @@
+/* Navbar.css */
+.navbar {
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $navbar-color;
+    color: white;
+    padding: 0px 35px 10px 90px;
+    min-height: 130px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    width: 100%; /* Agrega esta línea para ocupar el 100% del ancho */
+    position: fixed; /* Agrega esta línea para fijar la barra en la parte superior */
+    top: 0; /* Agrega esta línea para fijar la barra en la parte superior */
+    left: 0; /* Agrega esta línea para fijar la barra en la parte superior */
+    z-index: 1000; /* Agrega esta línea para asegurar que esté por encima de otros elementos */
+
+    
+  }
+  
+  .logo {
+    flex: 1;
+    width: 100px;
+    height: auto;
+
+    @include sm{
+      height: 45px;
+    }
+    @include md {
+      
+      align-self: center;
+    }
+  }
+  
+  .nav-link {
+    margin-right: 10px;
+    color: white;
+    margin-right: 25px;
+    text-decoration: none;
+    padding: 8px;
+     &:hover{
+      background-color: $gray;
+      border-radius: 5px;
+      padding: 8px;
+ 
+ 
+
+     }
+    
+  }
+  
+  .logout-button {
+    background-color: $gray;
+    color: white;
+    border: 10px;
+    border-radius: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    &:hover{
+      color:$yellow;
+      background-color: $black;
+      border-radius: 5px;
+    }
+  }
+  
