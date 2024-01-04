@@ -1,0 +1,71 @@
+.form {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 10px;
+    width: 600px;
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Añade algún espacio alrededor del formulario */
+    margin-top: 90px;
+
+  }
+  
+  .form label,
+  .form input,
+  .form select,
+  .form textarea {
+    display: inline-block;
+    width: 100%;
+   
+  }
+  .title{
+ text-align: end;
+ font-weight:600;
+  }
+  
+  .form input,
+  .form textarea {
+    font: inherit;
+    padding: 0.25rem;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+ .button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    background-color: $color-1;
+    color: $white;
+    border: none;
+    &:disabled {
+        background-color: $black; // Cambia el color a uno diferente cuando está deshabilitado
+        cursor: not-allowed; // Cambia el cursor a 'not-allowed' cuando está deshabilitado
+        color:$gray;
+      }
+  }
+  
+  a {
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--color-gray-300);
+  }
+  
+  .button:hover {
+    background-color: $red;
+    &:disabled {
+        background-color: $black; // Cambia el color a uno diferente cuando está deshabilitado
+        cursor: not-allowed; // Cambia el cursor a 'not-allowed' cuando está deshabilitado
+        color:$gray;
+      }
+  }
+  
+  .a:hover {
+    background-color: var(--color-gray-800);
+  }
+  

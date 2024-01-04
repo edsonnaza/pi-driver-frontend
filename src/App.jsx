@@ -5,6 +5,7 @@ import WelcomePage from './components/WelcomePage/WelcomePage';
 import NavBar from './components/NavBar/NavBar';
 import HomePage from './components/HomePage/HomePage';
 import AboutPage from './components/About/AboutPage';
+import NewDriver from './components/NewDriver/NewDriver';
 import DriverDetails from './components/DriverDetails/DriverDetails';
 import getDriverByName from './utils/getDriverByName';
 //import axios from 'axios';
@@ -35,23 +36,7 @@ function App() {
      // Get Driver By Name
      getDriverByName(drivername, setResponseData, setErrBarMessage, setDrivers);
 
-
-
-      //  axios(`${URL}?name=${drivername}`).then(
-      //   ({ data}) => {
-          
-      //      if (data[0].forename) {
-      //       setDrivers(data);
-      //        // setDrivers((oldDriver) => [...oldDriver, data]);
-      //         //dispatch(allCharacters(data));
-      //        // setPreImg(PreIMG_INIT);
-              
-      //      } else {
-      //         setResponseData(false);
-      //         setErrBarMessage(`Driver not found: ${drivername}`);
-      //        // window.alert('¡Character not found with the ID!'+ id);
-      //      }
-      //   }).catch(error =>console.log(error))     
+      
      } catch(error){
        console.log(error)
      }
@@ -68,6 +53,7 @@ function App() {
           <Route path="/home" element={<HomePage drivers={drivers} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/details/:id" element={<DriverDetails />} />
+          <Route path="/driver" element={<NewDriver />} />
         </Routes>
       </div>
   

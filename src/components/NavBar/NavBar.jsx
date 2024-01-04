@@ -19,6 +19,9 @@ const NavBar = (props) =>{
                 <Link to='/home' className={style['nav-link']}>
                     <span>Home</span>
                 </Link>
+                <Link to='/driver' className={style['nav-link']}>
+                    Create
+                </Link>
                 <Link to='/about' className={style['nav-link']}>
                     About
                 </Link>
