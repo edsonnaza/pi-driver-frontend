@@ -6,8 +6,9 @@ import NavBar from './components/NavBar/NavBar';
 import HomePage from './components/HomePage/HomePage';
 import AboutPage from './components/About/AboutPage';
 import DriverDetails from './components/DriverDetails/DriverDetails';
-import axios from 'axios';
-const URL = 'http://localhost:3003/drivers/';
+import getDriverByName from './utils/getDriverByName';
+//import axios from 'axios';
+//const URL = 'http://localhost:3003/drivers/';
 function App() {
   const [drivers, setDrivers] = useState([]);
   const [responseData,setResponseData]=useState(true);
@@ -31,21 +32,26 @@ function App() {
        return; 
      }
 
-       axios(`${URL}?name=${drivername}`).then(
-        ({ data}) => {
+     // Get Driver By Name
+     getDriverByName(drivername, setResponseData, setErrBarMessage, setDrivers);
+
+
+
+      //  axios(`${URL}?name=${drivername}`).then(
+      //   ({ data}) => {
           
-           if (data[0].forename) {
-            setDrivers(data);
-             // setDrivers((oldDriver) => [...oldDriver, data]);
-              //dispatch(allCharacters(data));
-             // setPreImg(PreIMG_INIT);
+      //      if (data[0].forename) {
+      //       setDrivers(data);
+      //        // setDrivers((oldDriver) => [...oldDriver, data]);
+      //         //dispatch(allCharacters(data));
+      //        // setPreImg(PreIMG_INIT);
               
-           } else {
-              setResponseData(false);
-              setErrBarMessage(`Driver not found: ${drivername}`);
-             // window.alert('¡Character not found with the ID!'+ id);
-           }
-        }).catch(error =>console.log(error))     
+      //      } else {
+      //         setResponseData(false);
+      //         setErrBarMessage(`Driver not found: ${drivername}`);
+      //        // window.alert('¡Character not found with the ID!'+ id);
+      //      }
+      //   }).catch(error =>console.log(error))     
      } catch(error){
        console.log(error)
      }

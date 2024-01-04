@@ -45,7 +45,7 @@ const HomePage = (props) => {
         First
         </button>
         <button
-          className={classes.button}
+          className={classes.pageButton}
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
         >

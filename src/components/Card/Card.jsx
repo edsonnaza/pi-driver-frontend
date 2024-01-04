@@ -1,7 +1,7 @@
 import classes from "./Card.module.scss";
 import { Link } from "react-router-dom";
  
-import { useState, useEffect } from "react";
+ 
  
 export default function Card(props) {
  
@@ -34,7 +34,7 @@ export default function Card(props) {
      
     <p>Teams: {teams.map((team, index) => index === teams.length - 1 ? team + '.' : team + ', ')}</p>
 	 <div className={classes.buttonContainer}>
-   <Link style={{ textDecoration: 'none' }} to={`/details/${id}`}>
+   <Link style={{ textDecoration: 'none' }} to={`/details/${id}?${image}?${teams}`}>
    <p className={classes.buttonDetails}>
 
 			More Info
