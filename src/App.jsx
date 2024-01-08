@@ -35,7 +35,7 @@ function App() {
 
      // Get Driver By Name
      getDriverByName(drivername, setResponseData, setErrBarMessage, setDrivers);
-
+    console.log('dentro de la app:',drivers)
       
      } catch(error){
        console.log(error)

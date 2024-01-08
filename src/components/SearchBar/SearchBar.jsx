@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import classes from './SearchBar.module.scss';
 import Lupa from '../../assets/Lupa.ico';
 import Download from '../../assets/download.ico';
+ 
 export default function SearchBar(props) {
 const [userId, setUserId] = useState('');
 const [driverName, setDriverName] = useState('');
@@ -64,6 +65,7 @@ const handleKeyDown = (event) =>{
          
          > <img className={classes.icono} src={icoImage} alt={"Search a Driver!"} /></button>
        
+      
       </div>
    );
 }

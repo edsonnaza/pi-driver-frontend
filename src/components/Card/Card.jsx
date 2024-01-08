@@ -8,6 +8,8 @@ export default function Card(props) {
   const {id,name,image,teams} = props;
  
 
+  console.log('dentro de la Card:', props)
+
   const closeHandler = (id) => {
     dispatch(removeFav(id));
     props.onClose(id);
@@ -32,7 +34,7 @@ export default function Card(props) {
 		{name}
 		</h3>
      
-    <p>Teams: {teams.map((team, index) => index === teams.length - 1 ? team + '.' : team + ', ')}</p>
+    <p className={classes.teamText}>Teams: {teams.map((team, index) => index === teams.length - 1 ? team + '.' : team + ', ')}</p>
 	 <div className={classes.buttonContainer}>
    <Link style={{ textDecoration: 'none' }} to={`/details/${id}?${image}?${teams}`}>
    <p className={classes.buttonDetails}>

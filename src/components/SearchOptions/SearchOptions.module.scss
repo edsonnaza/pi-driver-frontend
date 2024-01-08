@@ -1,0 +1,49 @@
+.searchOptions {
+    background-color: white;
+    position: relative;
+   
+    padding-top: 15px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    justify-content: center;
+    margin-top: 20px;
+   
+
+  
+    @include md {
+      margin-top: 5px;
+    }
+  
+  
+  
+    input {
+      padding-left: 10px;
+      border: none;
+      background-color: inherit;
+  
+      &:focus {
+        outline: none;
+      }
+  
+  
+    }
+  
+    .searchbutton {
+      cursor: pointer;
+      position: absolute;
+      border: none;
+      background-color: inherit;
+      right: 0;
+  
+    }
+  
+    .icono {
+      width: 26px;
+      padding: 0px 8px 0px 0px;
+  
+    }
+     
+  
+  }

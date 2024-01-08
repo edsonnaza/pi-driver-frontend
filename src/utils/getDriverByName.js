@@ -6,18 +6,19 @@ const URL = 'http://localhost:3003/drivers/';
 
 const getDriverByName = async (drivername, setResponseData, setErrBarMessage, setDrivers) => {
   try {
-    const exists = ''; // drivers.find(char => char.id === Number(id));
+   // const exists = ''; // drivers.find(char => char.id === Number(id));
 
-    if (exists) {
-      setResponseData(false);
-      setErrBarMessage('The driver has been added already!');
-      setPreImg([{ image: '', name: '' }]);
-      return;
-    }
+    // if (exists) {
+    //   setResponseData(false);
+    //   setErrBarMessage('The driver has been added already!');
+    //   setPreImg([{ image: '', name: '' }]);
+    //   return;
+    // }
 
     axios(`${URL}?name=${drivername}`).then(({ data }) => {
       if (data[0].forename) {
         setDrivers(data);
+        console.log('funcion by Name:',data);
         // setDrivers((oldDriver) => [...oldDriver, data]);
         // dispatch(allCharacters(data));
         // setPreImg(PreIMG_INIT);

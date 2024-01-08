@@ -5,7 +5,7 @@ import classes from './Cards.module.scss';
 export default function Cards(props) {
    const data = props.drivers;
    
-   console.log('cards',data);
+   console.log('dentro de la cards',data);
        return(  <div className={classes.cardsContainer} >
            
           {/* { 
