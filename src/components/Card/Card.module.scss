@@ -11,14 +11,14 @@
 
   
 figure {
-  margin: 10px;
+  margin: 5px;
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 150px;
-	min-width:280px;
-	height: 380px;
+	min-width:250px;
+	height: 370px;
 	border-radius: 10px;
 	box-shadow: 
 		0 1px 3px rgba(0,0,0,0.12), 
@@ -56,7 +56,7 @@ figure {
 		z-index: 999;
 	}
 	img {
-		height: 110%;
+		height: 112%;
 		transition: 0.25s;
 	}
 	figcaption {

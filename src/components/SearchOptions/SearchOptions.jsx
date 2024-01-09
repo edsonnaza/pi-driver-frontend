@@ -18,42 +18,35 @@ const SearchOptions = ({ filterOptions, sortOptions, onFilterChange, onSortChang
     return (
     <div className={classes.searchOptions}>
       {/* Filtros */}
-      <label>
-        Team:
+      <label  htmlFor="team">Team: </label>
+        
         <select name="team" value={filterOptions.team} onChange={onFilterChange}>
           <option value="">Select Team</option>
-          {teams.map((team) => (
-            <option key={team.id} value={team}>
+          {teams.map((team,index) => (
+            <option key={index} value={team}>
               {team}
             </option>
           ))}
         </select>
-      </label>
+      
 
-      <label>
-        Origin:
+      <label htmlFor="origin"> Origin:</label>
         <select name="origin" value={filterOptions.origin} onChange={onFilterChange}>
-         < option value='API'> API</option>
+        < option value='All'> ALL</option>
+         < option value='API'>API</option>
          <option value='DDBB'>DDBB</option>
         </select>
-      </label>
+      
 
       {/* Ordenamiento */}
-      <label>
-        Sort By:
-        <select name="sortBy" value={sortOptions.sortBy} onChange={onSortChange}>
-         <option value='dob'>Date of Birth</option>
-         <option value='driver'>Drivers Name</option>
-        </select>
-      </label>
-
-      <label>
-        Sort Order:
-        <select name="sortOrder" value={sortOptions.sortOrder} onChange={onSortChange}>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </label>
+<label htmlFor="sortBy">Sort by:</label>
+  <select name="sortBy" value={sortOptions.sortBy} onChange={onSortChange}>
+  <option value="resetAll">Reset All</option>
+    <option value="forename_asc">Name (A-Z)</option>
+    <option value="forename_desc">Name (Z-A)</option>
+    <option value="dob_asc">DOB (Asc)</option>
+    <option value="dob_desc">DOB (Desc)</option>
+  </select>
     </div>
   );
 };
