@@ -3,7 +3,7 @@ import classes from "./SearchOptions.module.scss";
 import getTeams from "../../utils/getTeams";
 
 
-const SearchOptions = ({ filterOptions, sortOptions, onFilterChange, onSortChange }) => {
+const SearchOptions = ({ sortSelectRef, filterOptions, sortOptions, onFilterChange, onSortChange }) => {
  const [teams, setTeams] = useState([]);
 
  useEffect(()=>{

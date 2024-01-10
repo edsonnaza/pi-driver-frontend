@@ -114,6 +114,7 @@ const HomePage = (props) => {
           sortOptions={sortOptions}
           onFilterChange={handleFilterChange}
           onSortChange={handleSortChange}
+          sortSelectRef={sortSelectRef}
         />
       )}
       <Cards drivers={currentDrivers} />
