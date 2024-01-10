@@ -54,6 +54,10 @@ figure {
 		transform: scale(1);
 		transition: 0.25s ease;
 		z-index: 999;
+
+		@include sm{
+			display: none;
+		}
 	}
 	img {
 		height: 112%;

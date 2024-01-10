@@ -7,15 +7,13 @@ const NavBar = (props) =>{
 
     return (
         <nav className={style.navbar}>
-            <div className={style['navbar-left']}>
+            <div className={style.logoContainer}>
                 <img src={Logo} alt='F1 Logo' className={style.logo}/>
-
-
             </div>
-            <div>
+            <div className={style.searchInputContainer}>
                 <SearchBar onSearch={props.onSearch}/>
             </div>
-            <div className={style['navbar-right']}>
+            <div className={style.linkContainer}>
                 <Link to='/home' className={style['nav-link']}>
                     <span>Home</span>
                 </Link>
@@ -25,13 +23,15 @@ const NavBar = (props) =>{
                 <Link to='/about' className={style['nav-link']}>
                     About
                 </Link>
+               
+            </div>
+                <div className={style.logoutContainer}>
                 <Link to="/" >
-                <button className={style['logout-button']}>
+                <button className={style.logoutButton}>
                     Logout
                 </button>
                 </Link>
-            </div>
-
+                </div>
         </nav>
     )
 }

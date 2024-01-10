@@ -1,7 +1,6 @@
 .searchOptions {
     background-color: $gray;
     position: relative;
-   
     padding-top: 12px;
     padding-bottom: 12px;
     display: flex;
@@ -10,13 +9,15 @@
     justify-content: center;
     margin-top: 0px;
     color: $white;
-   gap: 5px;
+    gap: 5px;
      
    
      
   
-    @include md {
-      margin-top: 5px;
+    @include sm {
+     margin-top: 40px;
+     position: sticky;
+      
     }
   
     .labelSpaces{
@@ -51,4 +52,11 @@
     }
      
   
+    .logoutContainer{
+
+      @include sm{
+        margin-right: 20px;
+      }
+
+    }
   }

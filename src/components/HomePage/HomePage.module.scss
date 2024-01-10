@@ -1,11 +1,37 @@
-.container {
+.containerNoEmpty {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     margin-bottom: 25px;
+
+    
+    @include sm{
+      margin-bottom: 50px;
+    }
+    
+    
      
     
   }
+
+
+  .containerEmpty {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    background-image: url('../../assets/bkg5.jpg');
+    width: 100vw;  // Ancho igual al ancho del viewport
+    height: 100vh; // Alto igual al alto del viewport
+     
+    
+  }
+  
+  
+
+  
+  
+   
   
  
   

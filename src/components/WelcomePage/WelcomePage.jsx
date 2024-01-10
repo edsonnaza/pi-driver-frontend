@@ -1,19 +1,37 @@
 import style from './WelcomePage.module.scss'
-import F1svg from '../../assets/F1.svg'
+ 
 import {Link} from 'react-router-dom';
 
 const WelcomePage = ()=>{
 
     return (
     <div className={style['welcome-page']} >
-      <h1>Welcome to Formula 1 World</h1>
-   <img src=   {F1svg}/>
+      
+ <h1 className={style.titleWelcome}>Welcome to formula one world</h1>
      
 
-<div>
+<div className={style.buttonContainer}>
   <Link to="/home">
-        <button className={style['enter-button']}>Start</button>
-  </Link>
+    
+  <button className={style["mybutton"]} type ="button">
+    <div className={style["mybuttoninner"]}>
+        <div className={style["mybuttoninner2"]}>
+            <ul>
+                <li className={style.li}>Engine</li>
+                <div className={style["mybuttoninnerline2"]}>
+                    <div className={style["mybuttoninnerline"]}></div>
+                </div>
+                <li>Start</li>
+            </ul>
+        </div>
+    </div>
+</button> 
+ </Link>
+   
+
+
+
+ 
 </div>
     </div>
     )

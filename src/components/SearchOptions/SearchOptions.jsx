@@ -40,7 +40,7 @@ const SearchOptions = ({ filterOptions, sortOptions, onFilterChange, onSortChang
 
       {/* Ordenamiento */}
 <label htmlFor="sortBy">Sort by:</label>
-  <select name="sortBy" value={sortOptions.sortBy} onChange={onSortChange}>
+  <select ref={sortSelectRef} name="sortBy" value={sortOptions.sortBy} onChange={onSortChange}>
   <option value="resetAll">Reset All</option>
     <option value="forename_asc">Name (A-Z)</option>
     <option value="forename_desc">Name (Z-A)</option>

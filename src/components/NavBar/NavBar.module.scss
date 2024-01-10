@@ -14,52 +14,108 @@
     top: 0; /* Agrega esta línea para fijar la barra en la parte superior */
     left: 0; /* Agrega esta línea para fijar la barra en la parte superior */
     z-index: 1000; /* Agrega esta línea para asegurar que esté por encima de otros elementos */
-
     
-  }
-  
-  .logo {
-    flex: 1;
-    width: 100px;
-    height: auto;
-
-    @include sm{
-      height: 45px;
-    }
-    @include md {
-      
-      align-self: center;
-    }
-  }
-  
-  .nav-link {
-    margin-right: 10px;
-    color: white;
-    margin-right: 25px;
-    text-decoration: none;
-    padding: 8px;
-     &:hover{
-      background-color: $gray;
-      border-radius: 5px;
-      padding: 8px;
- 
- 
-
+     @include sm {
+      display: inline-block;
      }
     
-  }
-  
-  .logout-button {
-    background-color: $gray;
-    color: white;
-    border: 10px;
-    border-radius: 10px;
-    padding: 8px 16px;
-    cursor: pointer;
-    &:hover{
-      color:$yellow;
-      background-color: $black;
-      border-radius: 5px;
+    .logoContainer{
+      .logo {
+        flex: 1;
+        width: 100px;
+        height: auto;
+    
+        @include sm{
+          
+          height: 45px;
+          margin-left: 200px;
+          padding-top: 10px;
+        }
+        @include md {
+          
+          align-self: center;
+        }
+      }
+    }
+    
+    .searchInputContainer{
+      margin-left: 500px;
+      .searchInput{
+        margin-left: 20px;
+      }
+
+      @include sm {
+        margin-left: 100px;
+        padding-top: 5px;
+
+      }
+      @include md{
+        margin-left: 30px;
+      }
+    }
+    
+    .linkContainer{
+        margin-left: 450px;
+      .nav-link {
+         
+        color: white;
+        margin-right: 10px;
+        text-decoration: none;
+        padding: 8px;
+         &:hover{
+          background-color: $gray;
+          border-radius: 5px;
+          padding: 8px;
+    
+         }
+
+         
+      }
+
+      @include sm{
+        margin-bottom: 50px;
+        margin-left: 120px;
+        padding-top: 25px;
+       }
+       @include md{
+        margin-left:30px;
+       }
+    }
+
+    .logoutContainer{
+   
+      .logoutButton {
+        background-color: $gray;
+        color: white;
+        border: 10px;
+        border-radius: 10px;
+        padding: 8px 16px;
+        cursor: pointer;
+        &:hover{
+          color:$yellow;
+          background-color: $black;
+          border-radius: 5px;
+        }
+    
+      }
+      @include sm{
+      margin-left: 350px;
+      padding-top: 1px;
+      margin-top: -78px;
+      
+      }
+
+      @include md {
+        margin-left: 5px;
+        margin-right: 10px;
+         
+      }
     }
   }
+  
+  
+  
+ 
+ 
+  
   

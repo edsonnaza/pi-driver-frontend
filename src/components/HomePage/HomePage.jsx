@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+ 
 import Cards from "../Cards/Cards";
 import classes from './HomePage.module.scss';
 import SearchOptions from "../SearchOptions/SearchOptions";
@@ -27,7 +28,7 @@ const HomePage = (props) => {
     sortOrder: "asc",
   });
 
-  
+  const sortSelectRef = useRef(null);
 
   const handleSearch = () => {
     // Lógica de búsqueda aquí con driverName, filterOptions y sortOptions
@@ -52,6 +53,9 @@ const HomePage = (props) => {
   if (value === 'resetAll') {
     // Realiza la acción especial aquí, por ejemplo, volviendo a cargar los datos originales
     dispatch(loadAllDrivers(''));
+    setFilterOptions({ team: '', origin: '' });
+    // Limpia la selección del sort
+    sortSelectRef.current.selectedIndex = 0;
   } else { 
 
     // Disparar acciones de ordenación según el valor del campo de selección
@@ -103,7 +107,7 @@ const HomePage = (props) => {
   }, [currentPage, drivers]);
 
   return (
-    <div className={classes.container}>
+    <div className={drivers.length === 0 ? classes.containerEmpty : classes.containerNoEmpty}>
       {drivers.length > 0 && (
         <SearchOptions
           filterOptions={filterOptions}
