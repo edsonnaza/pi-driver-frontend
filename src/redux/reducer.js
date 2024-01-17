@@ -7,6 +7,7 @@ import { ALL_DRIVERS,ALL_TEAMS,CREATE_NEW_DRIVER,GET_DRIVER_BY_ID, GET_DRIVER_DE
   GET_ERROR_SEARCH,
   SET_CURRENT_PAGE,
   SET_TOTAL_PAGES,
+  IS_LOADING,
   LOAD_DRIVERS_SUCCESS,
   LOAD_DRIVERS_FAILURE,} from "./actions-types";
 
@@ -28,12 +29,19 @@ const initialState = {
   driversPerPage:9,
   storedPage:"",
   totalPages:1,
+  isLoading:false,
 
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    
+   
+  case IS_LOADING:
+     
+    return {
+      ...state,
+      isLoading:payload
+    }
   case SET_CURRENT_PAGE:
   return {
     ...state,
@@ -60,13 +68,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
       }
 
     case ALL_DRIVERS:
- 
+    
       return {
         ...state,
         drivers: payload.drivers,
         originalDrivers: payload.drivers,
         message: payload.message, // Almacena el mensaje en el estado
         totalPages: Math.ceil(state.drivers.length / payload.driversPerPage),
+         
       };
 
       case GET_DRIVER_BY_ID:
@@ -106,7 +115,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         drivers: filteredDrivers,
         teamFilter:payload,
-       // message:'Filtered by Team',
+        message:filteredDrivers.length>0 ?'Success' :'No drivers found',
         
       };
 
@@ -125,8 +134,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
         return {
           ...state,
           drivers: filteredDriversOrigin,
-          originFilter:payload
-         // message:'Filtered by Origin'
+          originFilter:payload,
+          message:filteredDriversOrigin.length>0 ?'Success' :'No drivers found',
           
         };
      

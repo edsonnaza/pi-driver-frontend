@@ -26,7 +26,7 @@ const AboutPage = () =>{
           <iframe className={style.iframe}
             title="Portafolio Profile"
             src="https://edsonnaza.netlify.app"
-            width="30%"
+            width="50%"
             height="600"
           />
         </div>

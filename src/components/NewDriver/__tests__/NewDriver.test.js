@@ -1,30 +1,28 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import NewDriver from './NewDriver';
+import ReactDOM from 'react-dom';
+import HooksForm1 from '../../NewDriver/NewDriver';
+import {render, fireEvent, cleanup} from '@testing-library/react';
 
-test('Renderiza correctamente el componente NewDriver', () => {
-  render(<NewDriver />);
+afterEach(cleanup)
 
-  // Realiza afirmaciones sobre el contenido renderizado, por ejemplo:
-  expect(screen.getByText('Create New Driver')).toBeInTheDocument();
-  expect(screen.getByLabelText('Name:')).toBeInTheDocument();
-  // Añade más afirmaciones según tu estructura de componente
-});
+//testing a controlled component form.
+it('Inputing text updates the state', () => {
+    const { getByText, getByLabelText } = render(<HooksForm1 />);
 
-test('Envía el formulario correctamente', async () => {
-  render(<NewDriver />);
+    expect(getByText(/Change/i).textContent).toBe("Change: ")
 
-  // Simula la interacción del usuario completando el formulario
-  fireEvent.change(screen.getByLabelText('Name:'), { target: { value: 'John' } });
-  // Añade más simulaciones de eventos según tu formulario
+    fireEvent.change(getByLabelText("Input Text:"), {target: {value: 'Text' } } )
 
-  // Dispara el envío del formulario
-  fireEvent.click(screen.getByText('Save'));
+    expect(getByText(/Change/i).textContent).not.toBe("Change: ")
+ })
 
-  // Espera a que se complete la lógica asíncrona (si la hay)
-  await waitFor(() => {
-    // Realiza afirmaciones sobre el estado después de enviar el formulario
-    expect(screen.getByText('Driver saved successfully!')).toBeInTheDocument();
-  });
-});
+
+ it('submiting a form works correctly', () => {
+     const { getByTestId, getByText } = render(<HooksForm1 />);
+
+     expect(getByText(/Submit Value/i).textContent).toBe("Submit Value: ")
+
+     fireEvent.submit(getByTestId("form"), {target: {text1: {value: 'Text' } } })
+
+     expect(getByText(/Submit Value/i).textContent).not.toBe("Submit Value: ")
+  })

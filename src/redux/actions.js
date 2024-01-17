@@ -6,14 +6,11 @@ import {
   GET_DRIVER_DETAIL_BY_ID,
   FILTER_BY_TEAM,
   FILTER_BY_ORIGIN,
-  SORT_BY_DOB_ASC,
-  SORT_BY_DOB_DESC,
-  SORT_BY_NAME_ASC,
-  SORT_BY_NAME_DESC,
   RESET_FILTERS, 
   GET_ERROR_SEARCH,
   SET_CURRENT_PAGE,
-  SET_TOTAL_PAGES
+  SET_TOTAL_PAGES,
+  IS_LOADING
    
   } from "./actions-types";
  
@@ -24,7 +21,14 @@ const URL = 'http://localhost:3003/drivers/';
 const URL_TEAMS = 'http://localhost:3003/teams/';
  
  
+
+export const setIsLoading=(trueOrFalse)=>({
  
+type: IS_LOADING,
+payload: trueOrFalse,
+});
+
+
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   payload: currentPage,
@@ -42,7 +46,9 @@ export const setTotalPages = (driversPerPage) => (dispatch, getState) => {
 
 export const actionLoadAllTeams = () => {
   return async (dispatch) => {
+    
     try {
+      
       let data = null;
       const response = await axios.get(URL_TEAMS);
       data = response.data;
@@ -53,8 +59,11 @@ export const actionLoadAllTeams = () => {
         type: ALL_TEAMS,
         payload: data,
       });
+       
     } catch (error) {
+      dispatch(setIsLoading(false))
       if (error.response) {
+
         // El servidor respondió con un estado diferente de 2xx
         console.error('Error response data:', error.response.data);
         console.error('Error response status:', error.response.status);
@@ -75,7 +84,12 @@ export const actionLoadAllTeams = () => {
 export const loadAllDrivers = (searchInput) =>{
   return async (dispatch) => {
     try {
+
+       // Indicar que se está cargando
+       dispatch(setIsLoading(true))
+       
       // Lógica para obtener los drivers
+      
        
       const response = await axios(`${URL}${searchInput}`);      
       const data = response.data;
@@ -90,7 +104,8 @@ export const loadAllDrivers = (searchInput) =>{
         type: drivers.length > 0 ? ALL_DRIVERS: GET_ERROR_SEARCH,
         payload: {
           drivers,
-          message:message,
+          message:message
+           
         },
       });
 
@@ -99,8 +114,11 @@ export const loadAllDrivers = (searchInput) =>{
       //dispatch(filterByTeam(""));
      // dispatch(filterByOrigin("All"));
      dispatch(actionLoadAllTeams());
+     dispatch(setIsLoading(false));
+      
     } catch (error) {
       // Manejo de errores si es necesario
+      dispatch(setIsLoading(false))
       if (error.response) {
         // El servidor respondió con un estado diferente de 2xx
         console.error('Error response data:', error.response.data);
@@ -128,6 +146,7 @@ export const actionGetDriverById = (searchInput)=>{
   console.log('searchInput valor:',searchInput);
   return async (dispatch) => {
     try {
+      dispatch(setIsLoading(true))
       // Lógica para obtener los drivers
       
 
@@ -147,8 +166,9 @@ export const actionGetDriverById = (searchInput)=>{
         },
       });
 
- 
+      dispatch(setIsLoading(false))
     } catch (error) {
+      dispatch(setIsLoading(false))
       if (error.response) {
         // El servidor respondió con un estado diferente de 2xx
         console.error('Error response data:', error.response.data);
@@ -174,12 +194,12 @@ export const actionGetDriverById = (searchInput)=>{
 }
 
 export const actionGetDriverDetailById = (searchInput)=>{
-  console.log('searchInput Driver Detail value:',searchInput);
+   
   return async (dispatch) => {
     try {
       // Lógica para obtener los drivers
-      //const data = await getAllDrivers(drivername); // Asegúrate de pasar los parámetros necesarios
-      //const data = await getDriverById(idDriver); 
+     
+      dispatch(setIsLoading(true))
 
       const response = await axios(`${URL}${searchInput}`);      
       const data = response.data;
@@ -197,7 +217,7 @@ export const actionGetDriverDetailById = (searchInput)=>{
         },
       });
 
- 
+      dispatch(setIsLoading(false))
     } catch (error) {
       // Manejo de errores si es necesario
       console.error(error);
@@ -207,7 +227,7 @@ export const actionGetDriverDetailById = (searchInput)=>{
 }
 
 export const actionCreateNewDriver = (formData)=>{
-  console.log('Create New Driver:',formData);
+  
   let statusData='';
   let buttonDisabled='false';
   let responseFormData={};
@@ -215,6 +235,8 @@ export const actionCreateNewDriver = (formData)=>{
   
   return async (dispatch) => {
     try { 
+
+      dispatch(setIsLoading(true))
     const response = await axios.post(URL, formData,  
       {
         headers: {
@@ -254,7 +276,7 @@ export const actionCreateNewDriver = (formData)=>{
         },
       });
 
- 
+      dispatch(setIsLoading(false))
     } catch (error) {
       // Manejo de errores si es necesario
       console.error(error);
@@ -264,10 +286,13 @@ export const actionCreateNewDriver = (formData)=>{
 }
 
 export const filterByTeam = (team)=>{
+ 
   return {
     type: FILTER_BY_TEAM,
     payload: team
   }
+
+ 
 }
 
 export const filterByOrigin = (origin)=>{

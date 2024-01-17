@@ -19,5 +19,6 @@ export const GET_ERROR_SEARCH = 'GET_ERROR_SEARCH';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_TOTAL_PAGES = ' SET_TOTAL_PAGES';
 export const ALL_TEAMS = 'ALL_TEAMS';
+export const IS_LOADING = 'IS_LOADING';
  
  
