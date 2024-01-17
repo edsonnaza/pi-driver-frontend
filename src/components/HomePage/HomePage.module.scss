@@ -28,7 +28,20 @@
   }
   
   
-
+  .dataMessage{
+    display: flex;
+    justify-content: center;
+    z-index: 1px;
+    font-size: large;
+    background-color: $gray;
+    width: 500px;
+    align-self: center;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 12px;
+    color:$red;
+     }
   
   
    

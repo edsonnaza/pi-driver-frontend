@@ -4,31 +4,28 @@ import Lupa from '../../assets/Lupa.ico';
 import Download from '../../assets/download.ico';
  
 export default function SearchBar(props) {
-const [userId, setUserId] = useState('');
+ 
 const [driverName, setDriverName] = useState('');
 const [icoImage, setIcoImage] = useState(Lupa);
    
    //console.log(props);
-//  useEffect(()=>{
-//    const identifier = setTimeout(()=>{
-//       console.log('Checking the timer',userId);
-//       if(userId.length>0)
-//      { props.onSearchPrevImg(userId);
-//        setIcoImage(Download);
+ useEffect(()=>{
+   const identifier = setTimeout(()=>{
       
-//       }
-
-//       else {props.onSearchPrevImg(0);
-//                setIcoImage(Lupa);
-//             }
+  
+   if(driverName.length>0){
+      setIcoImage(Download);
+   } else {
+      setIcoImage(Lupa)
+   }
       
-//    },500);
+   },500);
 
-//    return ()=>{
-//       console.log('CLEANUP');
-//       clearTimeout(identifier);
-//    }
-//  },[userId]);
+   return ()=>{
+     // console.log('CLEANUP');
+      clearTimeout(identifier);
+   }
+ },[driverName]);
 
  const handleChange = (ev)=>{
    console.log(ev.target.value);

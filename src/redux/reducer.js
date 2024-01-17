@@ -1,26 +1,101 @@
-import { ALL_DRIVERS,FILTER_BY_TEAM,FILTER_BY_ORIGIN,
+import { ALL_DRIVERS,ALL_TEAMS,CREATE_NEW_DRIVER,GET_DRIVER_BY_ID, GET_DRIVER_DETAIL_BY_ID,FILTER_BY_TEAM,FILTER_BY_ORIGIN,
   SORT_BY_DOB_ASC,
   SORT_BY_DOB_DESC,
   SORT_BY_NAME_ASC,
   SORT_BY_NAME_DESC,
-  RESET_FILTERS} from "./actions-types";
+  RESET_FILTERS,
+  GET_ERROR_SEARCH,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_PAGES,
+  LOAD_DRIVERS_SUCCESS,
+  LOAD_DRIVERS_FAILURE,} from "./actions-types";
 
  
 const initialState = {
-  team:'',
-  origin:'', 
+  teams:[],
   drivers: [],
-  originalDrivers:[]
+  originalDrivers:[],
+  driverDetail:[],
+  message: 'Nothing',
+  status:'',
+  buttonDisabled:'false',
+  formData:{},
+  originFilter:'ALL', 
+  sortBy:"Reset All",
+  sortOrder:"asc",
+  teamFilter:"Select Team",
+  currentPage:1,
+  driversPerPage:9,
+  storedPage:"",
+  totalPages:1,
+
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ALL_DRIVERS:
+    
+  case SET_CURRENT_PAGE:
+  return {
+    ...state,
+    currentPage: payload,
+  };
+
+  case SET_TOTAL_PAGES:  
       return {
         ...state,
-        drivers: payload,
-        originalDrivers:payload
+        totalPages: payload,
       };
+
+    case GET_ERROR_SEARCH:
+       
+      return {
+        ...state,
+        message:payload.message,
+      }
+
+    case ALL_TEAMS:
+      return {
+        ...state,
+        teams:payload
+      }
+
+    case ALL_DRIVERS:
+ 
+      return {
+        ...state,
+        drivers: payload.drivers,
+        originalDrivers: payload.drivers,
+        message: payload.message, // Almacena el mensaje en el estado
+        totalPages: Math.ceil(state.drivers.length / payload.driversPerPage),
+      };
+
+      case GET_DRIVER_BY_ID:
+    
+        return {
+          ...state,
+          driverDetail:[payload.drivers],
+          drivers: [payload.drivers],
+          message: payload.message,
+        };
+      
+        case GET_DRIVER_DETAIL_BY_ID:
+    
+          return {
+            ...state,
+            driverDetail:[payload.drivers],
+           
+           
+          };
+
+          case CREATE_NEW_DRIVER:
+             
+            return {
+              ...state,
+              formData:payload.formData,
+              status:payload.status,
+              buttonDisabled:payload.buttonDisabled,
+             
+            };
 
       case FILTER_BY_TEAM:
         const filteredDrivers = payload === "" // Chequea si se seleccionó "Select Team"
@@ -29,12 +104,15 @@ const rootReducer = (state = initialState, { type, payload }) => {
     
       return {
         ...state,
-        drivers: filteredDrivers
+        drivers: filteredDrivers,
+        teamFilter:payload,
+       // message:'Filtered by Team',
+        
       };
 
 
       case FILTER_BY_ORIGIN:
-        console.log(payload);
+    
         const filteredDriversOrigin = payload === 'All'
           ? state.originalDrivers // Utiliza la lista completa de drivers
           : state.originalDrivers.filter((driver) => {
@@ -46,37 +124,51 @@ const rootReducer = (state = initialState, { type, payload }) => {
       
         return {
           ...state,
-          drivers: filteredDriversOrigin
+          drivers: filteredDriversOrigin,
+          originFilter:payload
+         // message:'Filtered by Origin'
+          
         };
      
         case SORT_BY_NAME_ASC:
           return {
             ...state,
             drivers: state.drivers.slice().sort((a, b) => a.forename.localeCompare(b.forename)),
+            sortBy:payload
           };
         case SORT_BY_NAME_DESC:
           return {
             ...state,
             drivers: state.drivers.slice().sort((a, b) => b.forename.localeCompare(a.forename)),
+            sortBy:payload
           };
         case SORT_BY_DOB_ASC:
           return {
             ...state,
             drivers: state.drivers.slice().sort((a, b) => new Date(a.dob) - new Date(b.dob)),
+            sortBy:payload
           };
         case SORT_BY_DOB_DESC:
           return {
             ...state,
             drivers: state.drivers.slice().sort((a, b) => new Date(b.dob) - new Date(a.dob)),
+            sortBy:payload
           };
       
     
     case RESET_FILTERS:
+      console.log('RESET FILTERS');
       return {
         ...state,
-        team: "",
-        origin: "All",
-      };
+        sortBy: "Reset All",
+        originFilter: "All",
+        teamFilter:"Select Team",
+        drivers:state.originalDrivers,
+         
+        
+      } ;
+
+    
 
     default:
       return state;

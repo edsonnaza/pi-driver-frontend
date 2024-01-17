@@ -1,5 +1,5 @@
 // App.jsx
-import React, {useEffect,useState} from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route,useLocation } from 'react-router-dom';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import NavBar from './components/NavBar/NavBar';
@@ -8,21 +8,17 @@ import AboutPage from './components/About/AboutPage';
 import NewDriver from './components/NewDriver/NewDriver';
 import DriverDetails from './components/DriverDetails/DriverDetails';
  
-import { useDispatch, useSelector } from 'react-redux';
-import  {loadAllDrivers,resetFilters}  from './redux/actions';
-//import getDriverByName from './utils/getDriverByName';
-//import axios from 'axios';
-//const URL = 'http://localhost:3003/drivers/';
+import { useDispatch } from 'react-redux';
+import  {loadAllDrivers,actionGetDriverById}  from './redux/actions';
+ 
 function App() {
- // const [drivers, setDrivers] = useState([]);
-  const [responseData,setResponseData]=useState(true);
-  const [errBarMessage, setErrBarMessage]=useState('');
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Cargar todos los conductores y restablecer los filtros al cargar la aplicación
-    dispatch(loadAllDrivers());
-    dispatch(resetFilters());
+    dispatch(loadAllDrivers);
+   // dispatch(resetFilters);
   }, [dispatch]);
 
  
@@ -31,36 +27,39 @@ function App() {
   }
   const {pathname} = useLocation();
 
-  const onSearch = async (drivername)=> {
-    try {
+  const onSearch = async (searchInput)=> {
+   // console.log('searchInput onSearch:',searchInput);
+  
 
+ if(searchInput===""){ 
+ //  console.log("inputSearch por vacio", searchInput);
+   dispatch(loadAllDrivers(searchInput));
+ }
 
-    //  const exists = '';//drivers.find(char => char.id === Number(id));
-
-    //  if(exists) {
-    //    setResponseData(false);
-    //    setErrBarMessage('The driver has been added already!');
-    //    setPreImg([{image:'',name:''}]);
-    //    return; 
-    //  }
-
-     // Get Driver By Name
-    // getDriverByName(drivername, setResponseData, setErrBarMessage, setDrivers);
-
-    
-    dispatch(loadAllDrivers(drivername));
+ if(typeof searchInput==='string' && isNaN(searchInput)){
+ // console.log('Buscar por nombre:', searchInput);
+  dispatch(loadAllDrivers(`?name=${searchInput}`));
+ }
  
+ if (typeof searchInput === 'string' && !isNaN(searchInput) && searchInput!=="") {
+   // La variable es una cadena que puede convertirse a número
+   const idDriver = Number(searchInput);
+  // console.log('La variable es una cadena que puede convertirse a número. Número:', idDriver);
+   dispatch(actionGetDriverById(idDriver) ) ;
+  }
+  
+  
+  const isNumericOrUUID = !isNaN(searchInput) || /^[0-9a-fA-F-]{36}$/.test(searchInput);
+      if(isNumericOrUUID && searchInput !== ""){
 
-    //console.log('dentro de la app:',drivers)
-      
-     } catch(error){
-       console.log(error)
+        console.log('Es UUID', searchInput);
+       dispatch(actionGetDriverById(searchInput) ) ;
+      }  
+  
+  
      }
 
-     }
-
-       const drivers = useSelector((state) => state.drivers);
-      console.log('drivers en la App:', drivers)
+       
   
   return (
   

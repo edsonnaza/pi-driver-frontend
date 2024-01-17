@@ -3,6 +3,8 @@ import axios from 'axios';
 import getTeams from '../../utils/getTeams';
 import style from './NewDriver.module.scss';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreateNewDriver } from '../../redux/actions';
  
 const newDriver = () => {
  
@@ -19,6 +21,8 @@ const newDriver = () => {
     status: 'Save'
   };
 
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({...initialFormData});
  
   const [escuderiasOptions, setEscuderiasOptions] = useState([]);
@@ -31,7 +35,7 @@ const newDriver = () => {
         setEscuderiasOptions(teams.map(escuderia => escuderia));
       } catch (error) {
         // Manejar el error según tus necesidades
-        console.error('Error obteniendo escuderías:', error);
+        console.error('Error getting the teams:', error);
       }
     };
 
@@ -51,31 +55,37 @@ const newDriver = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Aquí puedes agregar la lógica para enviar los datos a la API.
-    try {
-      const response = await axios.post('http://localhost:3003/drivers', formData,  setFormData({ ...formData, buttonDisabled: true, status:'Submitting...' }),
-      {
-        headers: {
-          'Content-Type': 'application/json', // Puedes agregar otros encabezados si es necesario
-        },
-       
-      });
+    // Aquí puedes agregar la lógica para enviar los datos a la API..
+     try {
 
-      if (response.status === 201) {
-        // Éxito
-        console.log('Respuesta de la API:', response.data);
-        setFormData({ ...initialFormData, buttonDisabled:true, status:'Saved' })
+      dispatch(actionCreateNewDriver(formData));
+     
+
+         
+
+          //   const response = await axios.post('http://localhost:3003/drivers', formData,  setFormData({ ...formData, buttonDisabled: true, status:'Submitting...' }),
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json', // Puedes agregar otros encabezados si es necesario
+    //     },
+       
+    //   });
+
+    //   if (response.status === 201) {
+    //     // Éxito
+    //     console.log('Response of the  API:', response.data);
+    //     setFormData({ ...initialFormData, buttonDisabled:true, status:'Saved' })
        
 
-        // Puedes agregar más lógica aquí después de la creación exitosa del driver
-      } else {
-        // Si el servidor responde con un código de error
-        console.error('Error en la respuesta de la API:', response.status, response.data);
-      }
+    //     // Puedes agregar más lógica aquí después de la creación exitosa del driver
+    //   } else {
+    //     // Si el servidor responde con un código de error
+    //     console.error('Error the response of the API:', response.status, response.data);
+    //   }
 
       // Puedes agregar más lógica aquí después de la creación exitosa del driver
     } catch (error) {
-      console.error('Error al enviar el formulario:', {error:error.message});
+      console.error('Error sending the data form:', {error:error.message});
       // Puedes manejar el error según tus necesidades
     }
   };
@@ -154,7 +164,18 @@ const newDriver = () => {
     }
   };
   
+  
   const selectedTeamsDisplay = formData.teams.join(', ');
+
+ // Obtén el estado directamente en la función principal del componente
+const buttonDisabled = useSelector((state) => state.buttonDisabled);
+const status = useSelector((state) => state.status);
+
+// Inicializa el estado al montar el componente
+useEffect(() => {
+  setFormData({ ...initialFormData, buttonDisabled, status });
+}, [buttonDisabled, status]);  // Asegúrate de incluir las dependencias necesarias
+
   return (
     <form className={style.form} onSubmit={handleCreateDriver}  >
      <div className={style.title}> Create New Driver</div>

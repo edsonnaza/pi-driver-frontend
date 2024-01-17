@@ -1,25 +1,28 @@
-// getDataByName.js
+// getDataById.js
 
 import axios from 'axios';
 
 const URL = 'http://localhost:3003/drivers/';
 
-const getDriverById = async (driverId,setDriverDetail) => {
+const getDriverById = async (idDriver) => {
+
   try {
-
-
-    axios(`${URL}${driverId}`).then(({ data }) => {
-      if (data.forename) {
-        setDriverDetail(data);
-       
-      } else {
-        setResponseData(false);
-        setErrBarMessage(`Driver not found: ${drivername}`);
-        // window.alert('¡Character not found with the ID!'+ id);
-      }
-    }).catch(error => console.log(error));
+    const response = await axios(`${URL}${idDriver}`);
+    const data = response.data;
+    console.log('getDriverById.js:',data)
+    if (data.forename) {
+      console.log('Function getDriverById:', data);
+      return data
+      //return { data: data, message: 'success' };
+      //return [data]; // Devolver un array con un solo elemento para que coincida con la estructura esperada
+    } else {
+      console.log('Error sin datos en getDriverById:',data.response.data);
+     // return { drivers: [data], message: 'Driver found' };
+      return { drivers: [], message: data.response.data };
+    }
   } catch (error) {
-    console.log(error);
+    console.error('Error in getDriverById:', error.response.data);
+    return { drivers: [], message: error.response.data };
   }
 };
 

@@ -8,10 +8,12 @@
 .teamText{
 	color: $white;
 }
-
+.dob{
+	color: $white;
+}
   
 figure {
-  margin: 5px;
+    margin: 5px;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -65,7 +67,7 @@ figure {
 	}
 	figcaption {
 		position: absolute;
-		bottom: -50%;
+		bottom: -60%;
 		left: 0;
 		width: 100%;
 		margin: 0;
@@ -84,9 +86,10 @@ figure {
 			line-height: 1.75;
 		}
 		.buttonDetails {
-			position: relative;
+			  
 			display: flex;
-			align-items: center;
+		 
+			align-self: center;
 			justify-content: center;
 			margin: 10px 0 0;
 			padding: 10px 30px;

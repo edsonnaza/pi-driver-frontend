@@ -5,7 +5,7 @@ import classes from './Cards.module.scss';
 export default function Cards(props) {
    const data = props.drivers;
    
-   console.log('dentro de la cards',data);
+   
        return(  <div className={classes.cardsContainer} >
            
           {/* { 
@@ -20,7 +20,8 @@ export default function Cards(props) {
                 teams={item.teams}
                 image={item.image_url}
                 id={item.id}
-                onClose={props.onClose}
+                dob={item.dob}
+               
 
 
                 />
