@@ -23,7 +23,7 @@ const DriverDetails = () =>{
     
   }, [dispatch, id]);
 
-  console.log('Driver Details componente:',driverDetail);
+   
    
 
    
@@ -52,8 +52,9 @@ const DriverDetails = () =>{
   
         <p className={classes.descriptionTitle}><strong>Description</strong></p>
         <p className={classes.description}>{driverDetail && driverDetail.description}</p>
-        <a href="/home" className={classes.button}>Follow {driverDetail && driverDetail.forename}</a>
-      </div>
+       <Link to="/home"><a  className={classes.button}>Follow {driverDetail && driverDetail.forename}</a></Link>
+      
+       </div>
     </div>
     )
 }

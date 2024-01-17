@@ -228,7 +228,7 @@ export const actionCreateNewDriver = (formData)=>{
         // Éxito
          statusData='Saved';
          buttonDisabled=true;
-         let message;
+      
 
         
        // setFormData({ ...initialFormData, buttonDisabled:true, status:'Saved' })
@@ -278,9 +278,13 @@ export const filterByOrigin = (origin)=>{
 }
 
 export const resetFilters = () => {
+  
   return {
     type: RESET_FILTERS,
+    
+    
   };
+ 
 };
 
 
