@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const WelcomePage = ()=>{
 
     return (
-    <div className={style['welcome-page']} >
+    <div className={style['welcome-page']} data-testid="WelcomePage">
       
  <h1 className={style.titleWelcome}>Welcome to formula one world</h1>
      

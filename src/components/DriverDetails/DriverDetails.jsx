@@ -1,10 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
-import {useState,useEffect} from 'react'
-//import getDriverById from '../../utils/getDriverById';
- 
+import {useEffect} from 'react'
 import classes from './DriverDetails.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-
 import  {actionGetDriverDetailById}  from '../../redux/actions';
  
 const DriverDetails = () =>{
@@ -12,7 +9,7 @@ const DriverDetails = () =>{
    const {id} = useParams();
    //const logo_url =  `https://media.api-sports.io/formula-1/teams/${idDriver}.png`
    
-   console.log('idDriver:',id);
+  // console.log('idDriver:',id);
    const dispatch= useDispatch();
  
    const driverDetail = useSelector((state) => state.driverDetail[0]);
@@ -32,7 +29,7 @@ const DriverDetails = () =>{
  
     return ( 
     
-      <div className={classes.wrap}>
+      <div className={classes.wrap} data-testid="DriverDetails">
       <div className={classes.box}>
         <div className={classes["box-top"]}>
           {driverDetail && (
@@ -52,7 +49,7 @@ const DriverDetails = () =>{
   
         <p className={classes.descriptionTitle}><strong>Description</strong></p>
         <p className={classes.description}>{driverDetail && driverDetail.description}</p>
-       <Link to="/home"><a  className={classes.button}>Follow {driverDetail && driverDetail.forename}</a></Link>
+       <Link to="/home"><button  className={classes.button}>Follow {driverDetail && driverDetail.forename}</button></Link>
       
        </div>
     </div>

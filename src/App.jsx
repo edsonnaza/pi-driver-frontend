@@ -28,7 +28,7 @@ function App() {
     console.log('logout');
   };
 
-  console.log('useLocation',useLocation());
+ 
   const { pathname } = useLocation();
 
   const onSearch = async (searchInput) => {

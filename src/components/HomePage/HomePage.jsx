@@ -4,7 +4,7 @@ import classes from './HomePage.module.scss';
 import SearchOptions from "../SearchOptions/SearchOptions";
 import Controls from "../Controls/Controls";
 import { useDispatch, useSelector } from 'react-redux';
-import { setTotalPages, setCurrentPage } from "../../redux/actions";
+import { setTotalPages } from "../../redux/actions";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,8 @@ const HomePage = () => {
   
   
   return (
-    <div className={drivers.length === 0 ? classes.containerEmpty : classes.containerNoEmpty}>
+    <div className={drivers.length === 0 ? classes.containerEmpty : classes.containerNoEmpty} data-testid="homeContainer">
+       
       {drivers.length > 0 && (
         <SearchOptions/>
       )}

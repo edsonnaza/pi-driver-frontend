@@ -1,14 +1,10 @@
 import style from './AboutPage.module.scss';
 import { Link } from 'react-router-dom';
-import edson from '../../assets/perfil-edson.jpeg';
+ 
 const AboutPage = () =>{
     return (
-        <div className={style.content}>
-          <img
-          className={style.edsonphoto}
-          src={edson}
-          alt="Eng. Edson Sanchez"
-        />
+        <div className={style.content} data-testid="AboutPage">
+          <div   alt="Edson" className={style.edsonphoto}  />
 
         <h1 className={style.h1}>Edson Sanchez</h1>
         <div className={style.info}>
