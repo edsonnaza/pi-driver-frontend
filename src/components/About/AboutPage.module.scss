@@ -15,6 +15,13 @@
 .p{
     color:$black;
     font-size: larger;
+    &:hover {
+        text-shadow: 
+            0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(230, 81, 81, 0.22);
+       
+        
+    }
 
 }
 .info{
@@ -25,22 +32,63 @@
     align-items: center;
     text-align: center;
    font-style: italic;
+   
+  
     
  
     
 }
+.imageContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;  // Ancho total de la pantalla
+    height: 50vh;  // Alto total de la pantalla
+   
+   
+    //background-image: url('../../assets/bkg4.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;  // Ajusta el c
+}
 
 .edsonphoto{
     margin-top: 120px;
-    width: 50%;
+    width: 48%;
+    height: 150%;
     border-radius: 30px;
     background-image: url('../../assets/perfiledson.jpeg');
+    background-color: red;
+    box-shadow: 
+    0 1px 3px rgba(0,0,0,0.12), 
+    0 1px 2px rgba(0,0,0,0.24);
+transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+overflow: hidden;
+&:hover {
+    box-shadow: 
+        0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
+   
+    
+}
+    
 }
 
 .h1{
     margin-top:10px;
     color:$black;
     font-size: x-large;
+    
+}
+
+.infLink{
+
+    &:hover{
+        color: $red;
+        font-size: large;
+    }
+    
 }
 
 

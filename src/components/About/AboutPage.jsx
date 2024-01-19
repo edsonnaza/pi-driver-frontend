@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 const AboutPage = () =>{
     return (
         <div className={style.content} data-testid="AboutPage">
-          <div   alt="Edson" className={style.edsonphoto}  />
+          <div   alt="Edson" className={style.imageContent}  >
+              <div className={style.edsonphoto}></div>
+          </div>
 
         <h1 className={style.h1}>Edson Sanchez</h1>
         <div className={style.info}>
-          <p><Link to="https://linkedin.com/in/edsonnaza">linkedin.com/in/edsonnaz</Link>a</p>
-          <p><Link to="https://github.com/edsonnaza">github.com/edsonnaza</Link>a</p>
-          <p><Link to="https://wakatime.com/@edsonnaza">wakatime.com/@edsonnaza</Link>a</p>
+          <p className={style.infLink}><Link to="https://linkedin.com/in/edsonnaza">linkedin.com/in/edsonnaz</Link>a</p>
+          <p className={style.infLink}><Link to="https://github.com/edsonnaza">github.com/edsonnaza</Link>a</p>
+          <p className={style.infLink}><Link to="https://wakatime.com/@edsonnaza">wakatime.com/@edsonnaza</Link>a</p>
         
         </div>
           <p className={style.p}>
