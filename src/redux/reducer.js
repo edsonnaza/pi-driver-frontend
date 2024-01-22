@@ -19,7 +19,7 @@ const initialState = {
   driverDetail:[],
   message: 'Nothing',
   status:'',
-  buttonDisabled:false,
+  buttonDisabled:true,
   formData:{},
   originFilter:'ALL', 
   sortBy:"Reset All",

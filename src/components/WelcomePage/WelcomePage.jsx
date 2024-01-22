@@ -13,7 +13,7 @@ const WelcomePage = ()=>{
 <div className={style.buttonContainer}>
   <Link to="/home">
     
-  <button className={style["mybutton"]} type ="button">
+  <button className={style["mybutton"]} type ="button" name="engineButton" data-testid="EngineButton">
     <div className={style["mybuttoninner"]}>
         <div className={style["mybuttoninner2"]}>
             <ul>

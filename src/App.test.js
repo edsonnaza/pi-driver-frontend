@@ -1,5 +1,7 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor,fireEvent, userEvent } from '@testing-library/react';
 import { BrowserRouter as Router , Route, Routes,RouterProvider, createMemoryRouter,MemoryRouter} from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { act } from 'react-dom/test-utils'
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -276,24 +278,8 @@ const initialState = {
   };
 
 describe('App Component Test', () => {
-    test('Render Welcome Page Component with the route "/"', async () => {
+  
 
-        const mockDispatch = jest.fn();
-
-        jest.mock('react-redux', () => ({
-          ...jest.requireActual('react-redux'),
-          useDispatch: () => mockDispatch,
-        }));
-            render(
-                <Provider store={mockStore(initialState)}>
-                  <Router initialEntries={['/']}>
-                    <WelcomePage />
-                  </Router>
-                </Provider>
-              );
-              expect(screen.getByText(/Welcome to formula one world/i)).toBeInTheDocument();
-
-    }); 
   it('Expect to see:  Welcome to formula one world ', async () => {
     const initialState = {
       isLoading: false,
@@ -308,7 +294,7 @@ describe('App Component Test', () => {
 
     render(
       <Provider store={mockStore(initialState)}>
-        <Router>
+        <Router initialEntries={['/']}>
           <App />
         </Router>
       </Provider>
@@ -319,6 +305,8 @@ describe('App Component Test', () => {
       
     });
   });
+
+ 
 
   it('Does not render Loader when isLoading is false', async () => {
     const initialState = {
@@ -473,4 +461,32 @@ render(
 
 expect(screen.getByTestId('NewDriverPage')).toBeInTheDocument();
 });
-});
+
+it('Render Home Page Component with the route click in button Engine "/"', async () => {
+ // Renderizar WelcomePage
+ render(
+    <Provider store={mockStore(initialState)}>
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
+      </MemoryRouter>
+    </Provider>
+  );
+
+  // Buscar el botón por su data-testid
+  const button = screen.getByTestId('EngineButton');
+
+  // Hacer clic en el botón dentro de un bloque de act
+  act(() => {
+    fireEvent.click(button);
+  });
+
+  // Esperar hasta que la condición se cumpla antes de verificar la ubicación
+  await waitFor(() => {
+    // Verificar que ciertos elementos esperados se renderizan después del click
+    expect(screen.getByTestId('homeContainer')).toBeInTheDocument();
+    
+});  });  });
+

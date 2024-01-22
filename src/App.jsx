@@ -8,6 +8,7 @@ import AboutPage from './components/About/AboutPage';
 import NewDriver from './components/NewDriver/NewDriver';
 import DriverDetails from './components/DriverDetails/DriverDetails';
 import Loader from './components/Loader/Loader';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAllDrivers, actionGetDriverById } from './redux/actions';
@@ -60,6 +61,7 @@ function App() {
 
   return (
     <div>
+      <Loader/>
     {isLoading && <Loader/>}
       {pathname !== '/' && <NavBar onSearch={onSearch} handleLogout={handleLogout} />}
       <Routes>
@@ -69,6 +71,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/details/:id" element={<DriverDetails />} />
         <Route path="/driver" element={<NewDriver />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

@@ -8,7 +8,7 @@ const getTeams = async () => {
    
     return response.data;
   } catch (error) {
-    console.error('Error fetching escuderías:', error);
+    console.log('Error fetching Teams:', error);
     throw error; // Puedes manejar el error según tus necesidades
   }
 };
