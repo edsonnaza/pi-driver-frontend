@@ -41,7 +41,7 @@ const SearchOptions = () => {
       dispatch(actionSortBy(value));
     }
   };
- console.log('filterOptions:', filterOptions.teamFilter);
+ 
   return (
     <div className={classes.searchOptions}>
       <label htmlFor="team">Team: </label>

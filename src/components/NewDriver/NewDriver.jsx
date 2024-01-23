@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import getTeams from '../../utils/getTeams';
 import style from './NewDriver.module.scss';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreateNewDriver } from '../../redux/actions';
 import validateForm from '../../utils/validateForm';
  
 const newDriver = () => {
-  //  // Obtén el estado directamente en la función principal del componente
+  //Obtén el estado directamente en la función principal del componente
  //const buttonDisabled = useSelector((state) => state.buttonDisabled);
  const status = useSelector((state) => state.status);
  const buttonDisabled= useSelector((state)=>state.buttonDisabled);
- console.log('useSelector status y buttonDisabled:',status, buttonDisabled);
+  
 
   const [teamColors, setTeamColors] = useState({});
   const initialFormStatus = {
@@ -130,18 +129,6 @@ const assignColorToTeam = (team) => {
 };
 
  
-  const handleKeyDown = (event) => {
-    // if (event.key === "Enter") {
-    //   event.preventDefault();
-    //   handleInputChange(event);
-    //   handleCreateDriver(event);
-    // }
-  };
- 
- 
-
-
- 
 const handleSendForm = async (e) => {
   e.preventDefault();
 
@@ -154,14 +141,14 @@ const handleSendForm = async (e) => {
       console.log('Data saved successfully!');
     } catch (error) {
       console.error('Error sending the data form:', error.message);
-      // Puedes manejar el error según tus necesidades
+       
     }
   } else {
     handleInputChange(e);
   }
 };
 
-//setFormStatus((preData)=>{(...preData,status,buttonDisabled)})
+ 
 
   return (
     <form className={style.form} onSubmit={handleSendForm}  data-testid="NewDriverPage" >
@@ -194,7 +181,7 @@ const handleSendForm = async (e) => {
      <p> 
 
         <label htmlFor='image'>Image:</label>
-        <input  type="text" name="image" value={inputForm.image}    
+        <input data-testid="image" type="text" name="image" value={inputForm.image}    
           onChange={handleInputChange}  />
         
      </p>
@@ -216,7 +203,7 @@ const handleSendForm = async (e) => {
   </p>
        
 <p> 
-      <label htmlFor='teams'>Teams: <span className={style.spanMessage} data-testid="teamsMessage">{errorMessage && errorMessage.teams}</span>  </label>   
+      <label  htmlFor='teams'>Teams: <span className={style.spanMessage} data-testid="teamsMessage">{errorMessage && errorMessage.teams}</span>  </label>   
       <br />
       
       {Array.isArray(inputForm.teams) && inputForm.teams.map((team, index) => (
@@ -231,14 +218,14 @@ const handleSendForm = async (e) => {
 
         
         
-<select multiple name="teams" value={inputForm.teams} onChange={handleInputChange}>
+<select data-testid="teamsSelectOption" multiple name="teams" value={inputForm.teams} onChange={handleInputChange}>
   {teamsOptions.map((team, index) => (
     <option key={index} value={team}>
       {team}
     </option>
   ))}
 </select>
-        <span className={style.multlipleChoice}>Press Ctrl or Command for multiple selection</span>
+         
     </p>
    
     <p className={style.savedMessage}>{status==='Saved' && 'Driver saved successfully!'}</p>

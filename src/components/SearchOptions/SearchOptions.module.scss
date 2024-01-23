@@ -1,6 +1,6 @@
 .searchOptions {
     background-color: $gray;
-    position: relative;
+    position: fix;
     padding-top: 12px;
     padding-bottom: 12px;
     display: flex;
@@ -15,8 +15,15 @@
      
   
     @include sm {
-     margin-top: 40px;
+     margin-top: 41px;
      position: sticky;
+     padding-left: 10px;
+     padding-right: 10px;
+     
+      
+    
+     
+  
       
     }
   

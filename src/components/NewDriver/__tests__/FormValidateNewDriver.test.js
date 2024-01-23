@@ -87,5 +87,18 @@ it('Displays error message wrong format of date of birth', async() => {
 expect(screen.getByTestId('dobMessage')).toBeInTheDocument('Invalid date format. Use YYYY/MM/DD, DD/MM/YYYY, MM/DD/YYYY o YYYY-MM-DD');
 });
 
+it('Displays error message select at leat one team', async() => {
+  await renderForm();
+
+
+   
+  fireEvent.change(screen.getByTestId('teams'), { target: { value: [] } });
+   
+   
+
+  fireEvent.click(screen.getByTestId('save'));
+
+expect(screen.getByTestId('teamsMessage')).toBeInTheDocument('Teams is empty, please select at least one team!');
+});
   // Agrega más pruebas según sea necesario para otras validaciones
 });

@@ -1,6 +1,5 @@
 import { render, screen, waitFor,fireEvent, userEvent } from '@testing-library/react';
-import { BrowserRouter as Router , Route, Routes,RouterProvider, createMemoryRouter,MemoryRouter} from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { BrowserRouter as Router , Route, Routes,MemoryRouter} from 'react-router-dom';
 import { act } from 'react-dom/test-utils'
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';

@@ -13,6 +13,12 @@
   place-content: center;
   gap: 1px;
    
+  @include sm{
+    
+    flex-direction: row;
+    width: 500px;
+    justify-content: center;
+  }
   
   }
   
