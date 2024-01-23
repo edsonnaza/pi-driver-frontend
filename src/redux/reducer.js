@@ -18,7 +18,7 @@ const initialState = {
   originalDrivers:[],
   driverDetail:[],
   message: 'Nothing',
-  status:'',
+  status:'save',
   buttonDisabled:true,
   formData:{},
   originFilter:'ALL', 

@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div>
-      <Loader/>
+  
     {isLoading && <Loader/>}
       {pathname !== '/' && <NavBar onSearch={onSearch} handleLogout={handleLogout} />}
       <Routes>
