@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actionCreateNewDriver } from '../../redux/actions';
 import validateForm from '../../utils/validateForm';
 import imageDefaultDriver from '../../../public/imageDefaultDriver.jpg';
-console.log(imageDefaultDriver);
+import { getRandomColor } from '../../utils/asignColor'; 
  
 const newDriver = () => {
   //Obtén el estado directamente en la función principal del componente
@@ -108,17 +108,8 @@ const newDriver = () => {
  
   }, []);
 
-  
-const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
 
-const assignColorToTeam = (team) => {
+const assignColorToTeam = (team,setTeamColors) => {
   // Si el equipo ya tiene un color asignado, devolver ese color
   if (teamColors[team]) {
     return teamColors[team];
@@ -159,7 +150,7 @@ const handleSendForm = async (e) => {
       <hr />
       <p>
       <label htmlFor='forename'>Name: </label>
-      <input data-testid="forename" type="text" autoComplete='off' name="forename" value={inputForm.forename}      onChange={handleInputChange}   />
+      <input   data-testid="forename" type="text" autoComplete='off' name="forename" value={inputForm.forename}      onChange={handleInputChange}   />
        <span className={style.spanMessage} data-testid="forenameMessage">{errorMessage && errorMessage.forename}</span>
       </p>
        
@@ -204,19 +195,26 @@ const handleSendForm = async (e) => {
         <span className={style.spanMessage}  data-testid="descriptionMessage">{errorMessage && errorMessage.description}</span>
   </p>
        
-<p> 
-      <label  htmlFor='teams'>Teams: <span className={style.spanMessage} data-testid="teamsMessage">{errorMessage && errorMessage.teams}</span>  </label>   
-      <br />
-      
-      {Array.isArray(inputForm.teams) && inputForm.teams.map((team, index) => (
-  <span  
-    key={index}
-    className={style.selectedTeams}
-    style={{ backgroundColor: assignColorToTeam(team) }}
-  >
-    {team}
-  </span>
-))}
+<div> 
+      <label  htmlFor='teams'>Teams: </label>   
+      <span className={style.spanMessage} data-testid="teamsMessage">
+          {errorMessage && errorMessage.teams} 
+      </span>
+
+        <div className={style.teamsSelectedContainer}>
+          {Array.isArray(inputForm.teams) && inputForm.teams.map((team, index) => (
+            <span  
+            key={index}
+            className={style.selectedTeams}
+            style={{ backgroundColor: assignColorToTeam(team,setTeamColors) }}
+            >
+              {team}
+            </span>  
+            ))}
+      </div>
+        
+
+    
 
         
         
@@ -227,8 +225,8 @@ const handleSendForm = async (e) => {
     </option>
   ))}
 </select>
+  </div>
          
-    </p>
    
     <p className={style.savedMessage}>{status==='Saved' && 'Driver saved successfully!'}</p>
    

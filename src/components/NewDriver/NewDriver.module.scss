@@ -7,6 +7,13 @@
     margin: auto; /* Centra el formulario horizontalmente */
     padding: 20px; /* Añade algún espacio alrededor del formulario */
     margin-top: 95px;
+
+    @include sm {
+      width: 350px;
+      height: auto;
+      margin-top: 190px;
+    
+    }
      
    
   }
@@ -22,6 +29,18 @@
 
   .spanMessage{
     color: $red;
+
+    
+  }
+
+  .teamsSelectedContainer{
+
+    max-width: 500px;
+    max-height: 70px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-top: 10px;
+ 
   }
 
   .multlipleChoice{
@@ -32,6 +51,11 @@
   .title{
  text-align: end;
  font-weight:600;
+
+ @include sm{
+  display: flex;
+  justify-content: center;
+ }
   }
   .selectedTeams{
     white-space: nowrap;
@@ -47,6 +71,12 @@
    justify-content: space-around;
    margin-right: 8px;
    margin-bottom: 4px;
+
+   @include sm{
+    font-size: small;
+ 
+
+   }
    
 
  
@@ -73,6 +103,12 @@
     gap: 1rem;
     justify-content: flex-end;
     align-items: center;
+
+
+    @include sm{
+      justify-content: center;
+       padding-top: 30px;
+    }
   }
   
  .button {

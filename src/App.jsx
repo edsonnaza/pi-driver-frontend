@@ -14,12 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadAllDrivers, actionGetDriverById } from './redux/actions';
 import axios from 'axios';
   
-//console.log(import.meta.env.VITE_BASE_URL) // 123
-//axios.defaults.baseURL='https://pi-driver-backend-production.up.railway.app';
-//import.meta.env.REACT_APP_API_BASE_URL;
-//console.log(import.meta.env.MODE.baseURL);
 axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
-console.log(axios.defaults.baseURL);
+ 
 function App() {
  
   const isLoading = useSelector((state) => state.isLoading);

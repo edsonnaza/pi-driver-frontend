@@ -21,7 +21,7 @@ import axios from 'axios';
 //const URL_TEAMS = 'https://pi-driver-backend-production.up.railway.app/teams/';
  
 axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
-console.log('acitons:',axios.defaults.baseURL);
+//console.log('acitons:',axios.defaults.baseURL);
  
 
 export const setIsLoading=(trueOrFalse)=>({
