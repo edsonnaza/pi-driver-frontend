@@ -17,9 +17,11 @@ import {
  
 import axios from 'axios';
 
-const URL = 'http://localhost:3003/drivers/';
-const URL_TEAMS = 'http://localhost:3003/teams/';
+//const URL = 'https://pi-driver-backend-production.up.railway.app/drivers';
+//const URL_TEAMS = 'https://pi-driver-backend-production.up.railway.app/teams/';
  
+axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
+console.log('acitons:',axios.defaults.baseURL);
  
 
 export const setIsLoading=(trueOrFalse)=>({
@@ -50,7 +52,7 @@ export const actionLoadAllTeams = () => {
     try {
       
       let data = null;
-      const response = await axios.get(URL_TEAMS);
+      const response = await axios.get('/teams');
       data = response.data;
 
        
@@ -91,7 +93,8 @@ export const loadAllDrivers = (searchInput) =>{
       // Lógica para obtener los drivers
       
        
-      const response = await axios(`${URL}${searchInput}`);      
+      //const response = await axios(`{'/drivers/'}${searchInput}`);  
+      const response = await axios(`drivers/${searchInput}`);   
       const data = response.data;
 
       
@@ -150,7 +153,7 @@ export const actionGetDriverById = (searchInput)=>{
       // Lógica para obtener los drivers
       
 
-      const response = await axios(`${URL}${searchInput}`);      
+      const response = await axios(`drivers/${searchInput}`);      
       const data = response.data;
      
       const drivers = data;
@@ -201,7 +204,7 @@ export const actionGetDriverDetailById = (searchInput)=>{
      
       dispatch(setIsLoading(true))
 
-      const response = await axios(`${URL}${searchInput}`);      
+      const response = await axios(`drivers/'}${searchInput}`);      
       const data = response.data;
       
       //const drivers = Array.isArray(data) ? data : [data];
@@ -237,7 +240,7 @@ export const actionCreateNewDriver = (formData)=>{
     try { 
 
       dispatch(setIsLoading(true))
-    const response = await axios.post(URL, formData,  
+    const response = await axios.post('/drivers/', formData,  
       {
         headers: {
           'Content-Type': 'application/json', // Puedes agregar otros encabezados si es necesario

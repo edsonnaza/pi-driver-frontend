@@ -12,7 +12,14 @@ import PageNotFound from './components/PageNotFound/PageNotFound';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAllDrivers, actionGetDriverById } from './redux/actions';
-
+import axios from 'axios';
+  
+//console.log(import.meta.env.VITE_BASE_URL) // 123
+//axios.defaults.baseURL='https://pi-driver-backend-production.up.railway.app';
+//import.meta.env.REACT_APP_API_BASE_URL;
+//console.log(import.meta.env.MODE.baseURL);
+axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
+console.log(axios.defaults.baseURL);
 function App() {
  
   const isLoading = useSelector((state) => state.isLoading);
@@ -33,10 +40,6 @@ function App() {
   const { pathname } = useLocation();
 
   const onSearch = async (searchInput) => {
-    
-   // setIsLoading(true)
-   // dispatch(setIsLoading(true));
-    console.log('isLoading true',isLoading)
 
     if (searchInput === '') {
       dispatch(loadAllDrivers(searchInput));
@@ -51,9 +54,7 @@ function App() {
         dispatch(actionGetDriverById(searchInput));
       }
     }
-
-     //setIsLoading(false);
-   ///  dispatch(setIsLoading(false));
+ 
      console.log('isLoading false',isLoading)
   };
     
@@ -65,7 +66,6 @@ function App() {
     {isLoading && <Loader/>}
       {pathname !== '/' && <NavBar onSearch={onSearch} handleLogout={handleLogout} />}
       <Routes>
-    
         <Route path="/" element={<WelcomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

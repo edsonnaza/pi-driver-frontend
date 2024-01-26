@@ -1,10 +1,10 @@
 // utils/getTeams.js
 import axios from 'axios';
-const URL = 'http://localhost:3003/teams';
+//const URL = 'http://localhost:3003/teams';
 
 const getTeams = async () => {
   try {
-    const response = await axios.get(URL);
+    const response = await axios.get('/teams');
    
     return response.data;
   } catch (error) {

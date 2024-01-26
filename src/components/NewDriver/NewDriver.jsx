@@ -4,6 +4,8 @@ import style from './NewDriver.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreateNewDriver } from '../../redux/actions';
 import validateForm from '../../utils/validateForm';
+import imageDefaultDriver from '../../../public/imageDefaultDriver.jpg';
+console.log(imageDefaultDriver);
  
 const newDriver = () => {
   //Obtén el estado directamente en la función principal del componente
@@ -24,7 +26,7 @@ const newDriver = () => {
     forename:'',
     lastname:'',
     nationality:'',
-    image:'',
+    image:imageDefaultDriver,
     dob:'',
     description:'',
     teams:[]

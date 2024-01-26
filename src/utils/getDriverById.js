@@ -2,12 +2,12 @@
 
 import axios from 'axios';
 
-const URL = 'http://localhost:3003/drivers/';
+//const URL = 'http://localhost:3003/drivers/';
 
 const getDriverById = async (idDriver) => {
 
   try {
-    const response = await axios(`${URL}${idDriver}`);
+    const response = await axios(`/drivers/${idDriver}`);
     const data = response.data;
     console.log('getDriverById.js:',data)
     if (data.forename) {
