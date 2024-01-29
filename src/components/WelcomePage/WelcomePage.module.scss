@@ -71,8 +71,11 @@ color:#383838;
  padding-bottom: 5px;
 
  @include sm{
-  font-size: 30px;
-  margin-top: 250px;
+  font-size:x-large;
+  margin-top: 300px;
+  padding-right: 7px;
+  padding-left: 3px;
+ 
 }
 @include md {
   
@@ -96,12 +99,22 @@ color:#383838;
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+
+  
   
 }
 
 .buttonContainer{
  
  margin-top: 400px;
+
+ @include sm{
+ margin-bottom: 100px;
+ padding-bottom: 100px;
+  
+ 
+   
+ }
 }
 
 .enter-button:hover {
