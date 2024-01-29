@@ -17,6 +17,7 @@
     
      @include sm {
       display: inline-block;
+      min-height: 80px;
      }
     
     .logoContainer{
@@ -28,8 +29,8 @@
         @include sm{
           
           height: 45px;
-          margin-left: 200px;
-          padding-top: 10px;
+          margin-left: 80px;
+          padding-top: 1px;
         }
         @include md {
           
@@ -42,11 +43,14 @@
       margin-left: 500px;
       .searchInput{
         margin-left: 20px;
+
+         
       }
 
       @include sm {
-        margin-left: 100px;
+       margin-left: -5px;
         padding-top: 5px;
+        
 
       }
       @include md{
@@ -74,7 +78,7 @@
 
       @include sm{
         margin-bottom: 50px;
-        margin-left: 120px;
+        margin-left: -35px;
         padding-top: 25px;
        }
        @include md{
@@ -99,7 +103,7 @@
     
       }
       @include sm{
-      margin-left: 350px;
+      margin-left: 220px;
       padding-top: 1px;
       margin-top: -78px;
       
